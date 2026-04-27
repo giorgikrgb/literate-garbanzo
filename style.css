@@ -1,4 +1,4 @@
-* {
+** {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -10,6 +10,7 @@ body {
   color: #333;
 }
 
+/* HEADER */
 .header {
   display: flex;
   justify-content: space-between;
@@ -25,11 +26,16 @@ body {
 .nav a {
   text-decoration: none;
   color: #666;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  color: #22c55e;
 }
 
 .nav .active {
-  color: green;
-  border-bottom: 2px solid green;
+  color: #22c55e;
+  border-bottom: 2px solid #22c55e;
 }
 
 .btn {
@@ -39,14 +45,21 @@ body {
   padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
+.btn:hover {
+  background: #16a34a;
+}
+
+/* HERO LAYOUT */
 .hero-wrapper {
   display: grid;
   grid-template-columns: 260px 1fr;
   gap: 20px;
   padding: 20px 40px;
 }
+
 
 .sidebar {
   background: white;
@@ -79,13 +92,20 @@ body {
   object-fit: cover;
 }
 
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.4);
+}
+
 .hero-content {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: #333;
+  z-index: 2;
 }
 
 .hero-content h1 {
@@ -103,7 +123,8 @@ body {
   padding: 10px;
   border-radius: 8px 0 0 8px;
   border: none;
-  width: 200px;
+  width: 220px;
+  outline: none;
 }
 
 .search button {
@@ -111,7 +132,9 @@ body {
   border: none;
   background: white;
   border-radius: 0 8px 8px 0;
+  cursor: pointer;
 }
+
 
 .cards-section {
   padding: 20px 40px;
@@ -123,7 +146,7 @@ body {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr); /* უფრო ახლოს დიზაინთან */
   gap: 18px;
 }
 
@@ -138,7 +161,8 @@ body {
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .card img {
@@ -150,7 +174,7 @@ body {
   position: absolute;
   top: 10px;
   left: 10px;
-  background: green;
+  background: #22c55e;
   color: white;
   padding: 3px 8px;
   font-size: 12px;
@@ -158,14 +182,17 @@ body {
 }
 
 .price {
-  color: green;
+  color: #22c55e;
   font-weight: bold;
+  margin-top: 5px;
 }
 
 .info {
   font-size: 12px;
   color: #777;
+  margin-top: 5px;
 }
+
 
 .footer {
   background: #22c55e;
@@ -185,6 +212,13 @@ body {
 .footer a {
   color: white;
   text-decoration: none;
+}
+
+
+@media (max-width: 1200px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 1024px) {
@@ -208,6 +242,10 @@ body {
 
   .nav {
     display: none;
+  }
+
+  .header {
+    padding: 15px 20px;
   }
 
   .hero-content h1 {
